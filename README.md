@@ -8,13 +8,13 @@ and [neoterm](https://github.com/kassio/neoterm).
 To use with the packer plugin manager, enter in your config file:
 
 ```lua
-	use({
-		"mlorthiois/repl-region.nvim",
-		requires = {
-      "nvim-treesitter/nvim-treesitter",
-      "kassio/neoterm"
-    },
-	})
+use({
+  "mlorthiois/repl-region.nvim",
+  requires = {
+    "nvim-treesitter/nvim-treesitter",
+    "kassio/neoterm"
+  },
+})
 ```
 
 Then, place your cursor on the line containing the statement you want to run, and use command
