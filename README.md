@@ -18,24 +18,36 @@ use({
 ```
 
 Then, place your cursor on the line containing the statement you want to run, and use command
-`:TREPLSendRegion`.
+`:TREPLSendLineStatement`. If you want to run the whole statement, use `:TREPLSendContextStatement`.
 
-This command run the code, and set cursor one line below the region runned (like in RStudio).
+From lua, these commands are also availabled from `require("repl_region").send_repl_statement("line")` and `require("repl_region").send_repl_statement("global")`.
+
+These commands run the code, and set cursor one line below the region runned (like in RStudio).
 
 ## Example
 
 ```py
 def my_function():
-  for i in range(5):
+  for i in range(5): # << cursor here
       if i%2 == 0:
         print(i)
 ```
 
-If your cursor is on:
+- `:TREPLSendLineStatement` will run the for loop, and will place the cursor under the `print`.
+- `:TREPLSendContextStatement` will run the whole function, and will place the cursor under the `print`.
 
-- the first line, the whole function will be runned.
-- the second line, the whole for statement will be runned.
-- the third line, the if statement
-- the fourth line, the print function.
+---
+
+```py
+def my_function():
+  for i in range(5):
+      if i%2 == 0:   # << cursor here
+        print(i)
+```
+
+- `:TREPLSendLineStatement` will run the if statement, and will place the cursor under the `print`.
+- `:TREPLSendContextStatement` will run the whole function and will place the cursor under `print`.
+
+---
 
 Tested with Python, R, nodeJS.
